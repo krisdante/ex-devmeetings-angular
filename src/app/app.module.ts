@@ -8,6 +8,7 @@ import { HelpPipe } from './help.pipe';
 import { FilterPipe } from './filter.pipe';
 
 import { ProductsProvider } from './products-provider'
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductsProvider } from './products-provider'
     FilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [ProductsProvider],
   bootstrap: [AppComponent]

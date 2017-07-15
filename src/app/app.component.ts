@@ -15,7 +15,9 @@ export class AppComponent implements OnInit {
   private sortBy: Filter;
 
   constructor(productsProvider: ProductsProvider) {
-    this.products = productsProvider.products();
+    // this.products = productsProvider.products();
+    this.products=[];
+    productsProvider.productsGet(this.products);
   }
 
   ngOnInit() {

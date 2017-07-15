@@ -1,9 +1,14 @@
 import { Product, ProductImpl} from './product/product.interface';
 import faker from 'faker';
 import {Injectable} from "@angular/core";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class ProductsProvider {
+    private http: Http;
+    constructor(http: Http) {
+        this.http = http;
+    }
     public products() {
         let res = [];
         for(let i = 1; i< 50; i++) {
@@ -15,6 +20,14 @@ export class ProductsProvider {
             res.push(prod);
         }
         return res;
+    }
+
+    public productsGet(callset: any) {
+        this.http.get('/assets/products.json').subscribe(x => {
+            let xx = x.json();
+            callset.length=0;
+            callset.push(...xx);
+        });
     }
 }
 
