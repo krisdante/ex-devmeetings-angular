@@ -14,14 +14,22 @@ export class AppComponent implements OnInit {
   public filterStr: string;
   private sortBy: Filter;
 
+  // public productsObservable;
+
   constructor(productsProvider: ProductsProvider) {
     // this.products = productsProvider.products();
     this.products=[];
     // productsProvider.productsGet(this.products);
 
-    productsProvider.productPromise().then(res => {
-      this.products = res
+    // productsProvider.productPromise().then(res => {
+    //   this.products = res
+    // });
+    //
+    productsProvider.productsObservable().subscribe(data => {
+      this.products = data.json();
     });
+
+
   }
 
   ngOnInit() {

@@ -37,5 +37,10 @@ export class ProductsProvider {
         });
     }
 
+    public productsObservable() {
+        return this.http.get('/assets/products.json');
+    }
+
+
 }
 
