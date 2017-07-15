@@ -10,6 +10,7 @@
 .product__name {
     font-size: 18px;
     font-family: "Comic Sans MS";
+    margin: 0;
 }
 
 .product__price {
@@ -25,4 +26,14 @@
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
+}
+
+.product__cta {
+    display: block;
+    margin: 10px;
+    background: pink;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 20px;
 }

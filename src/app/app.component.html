@@ -1,1 +1,1 @@
-<app-products-list [products]="productsObj()"></app-products-list>
+<app-products-list [products]="productsObj()" (filterUpdated)="onFilterUpdated($event)" (sortUpdated)="onSort($event)"></app-products-list>

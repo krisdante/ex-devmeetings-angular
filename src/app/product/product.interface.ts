@@ -11,7 +11,6 @@ export interface TaggableProduct {
     tags: Array<string>;
 }
 
-
 export class ProductImpl implements Product, PromotedProduct, TaggableProduct {
     constructor(
         public name, public price, public promoted = false, public tags = []
