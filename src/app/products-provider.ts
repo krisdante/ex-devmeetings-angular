@@ -3,12 +3,15 @@ import faker from 'faker';
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 
+import 'rxjs/add/operator/toPromise';
+
 @Injectable()
 export class ProductsProvider {
     private http: Http;
     constructor(http: Http) {
         this.http = http;
     }
+
     public products() {
         let res = [];
         for(let i = 1; i< 50; i++) {
@@ -22,6 +25,10 @@ export class ProductsProvider {
         return res;
     }
 
+    public productPromise() : Promise<ProductImpl[]> {
+        return this.http.get('/assets/products.json').toPromise().then(res=>res.json() as ProductImpl[]);
+    }
+
     public productsGet(callset: any) {
         this.http.get('/assets/products.json').subscribe(x => {
             let xx = x.json();
@@ -29,5 +36,6 @@ export class ProductsProvider {
             callset.push(...xx);
         });
     }
+
 }
 

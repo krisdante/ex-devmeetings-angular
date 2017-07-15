@@ -17,15 +17,19 @@ export class AppComponent implements OnInit {
   constructor(productsProvider: ProductsProvider) {
     // this.products = productsProvider.products();
     this.products=[];
-    productsProvider.productsGet(this.products);
+    // productsProvider.productsGet(this.products);
+
+    productsProvider.productPromise().then(res => {
+      this.products = res
+    });
   }
 
   ngOnInit() {
     this.filterStr = '';
   }
 
-  public onFilterUpdated(event) {
-    this.filterStr = event;
+  public onFilterUpdated(par1) {
+    this.filterStr = par1;
   }
 
   public onSort(event) {
@@ -33,7 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   public productsObj(): Array<ProductImpl>  {
-    let res = this.products;
+    let res = [...this.products];
     // res = res.filter((item)=>{
     //   let where = item.name + item.price + item.tags.join();
     //   return where.toLocaleLowerCase().match(this.filterStr.toLocaleLowerCase())
