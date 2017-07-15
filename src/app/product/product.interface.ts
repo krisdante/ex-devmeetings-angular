@@ -3,14 +3,18 @@ export interface Product {
     price: number,
 }
 
-export interface PromotedProduct {
+export interface PromotedProduct{
     promoted: boolean
 }
 
+export interface TaggableProduct {
+    tags: Array<string>;
+}
 
-export class ProductImpl implements Product, PromotedProduct {
+
+export class ProductImpl implements Product, PromotedProduct, TaggableProduct {
     constructor(
-        public name, public price, public promoted
+        public name, public price, public promoted = false, public tags = []
     ) {};
 }
 

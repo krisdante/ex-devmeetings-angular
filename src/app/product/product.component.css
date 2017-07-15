@@ -1,7 +1,28 @@
 .product {
+    margin: 10px;
+}
 
+.product--promoted {
+    border: 3px double deeppink;
+    padding: 10px;
 }
 
 .product__name {
-    font-size: 14px;
+    font-size: 18px;
+    font-family: "Comic Sans MS";
+}
+
+.product__price {
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.product__tag {
+    background: blue;
+    margin: 3px;
+    border-radius: 3px;
+    padding: 3px;
+    color: white;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
 }

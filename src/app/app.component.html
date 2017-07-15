@@ -1,7 +1,1 @@
-
-
-
-<div *ngFor="let product of productsObj()" class="product" [ngClass]="{'product--promoted': product.promoted}">
-  <h1 class="product__name">{{product.name}}</h1>
-  <span class="product__price">{{product.price}}</span>
-</div>
+<app-products-list [products]="productsObj()"></app-products-list>
