@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductImpl} from './product/product.interface';
-import faker from 'faker';
+import { ProductImpl } from './product/product.interface';
 import { Filter } from './filter.interface';
+import { ProductsProvider } from './products-provider';
 
 @Component({
   selector: 'app-root',
@@ -11,42 +11,31 @@ import { Filter } from './filter.interface';
 export class AppComponent implements OnInit {
   public title = 'app';
   private products: Array<ProductImpl>;
-  private filter: string;
+  public filterStr: string;
   private sortBy: Filter;
 
+  constructor(productsProvider: ProductsProvider) {
+    this.products = productsProvider.products();
+  }
+
   ngOnInit() {
-    this.products = this.productsProvider();
-    this.filter = '';
+    this.filterStr = '';
   }
 
   public onFilterUpdated(event) {
-    this.filter = event;
+    this.filterStr = event;
   }
 
   public onSort(event) {
     this.sortBy = event
   }
 
-  private productsProvider(): Array<ProductImpl> {
-    let res = [];
-    for(let i = 1; i< 50; i++) {
-      let tags = [];
-      for(let t = 1; t < Math.ceil(Math.random() * 4); t++) {
-        tags.push(faker.hacker.noun());
-      }
-
-      let prod = new ProductImpl(faker.commerce.productName(), faker.commerce.price(), faker.random.boolean(), tags);
-      res.push(prod);
-    }
-    return res;
-  }
-
-  public productsObj(): Array<Product>  {
+  public productsObj(): Array<ProductImpl>  {
     let res = this.products;
-    res = res.filter((item)=>{
-      let where = item.name + item.price + item.tags.join();
-      return where.toLocaleLowerCase().match(this.filter.toLocaleLowerCase())
-    });
+    // res = res.filter((item)=>{
+    //   let where = item.name + item.price + item.tags.join();
+    //   return where.toLocaleLowerCase().match(this.filterStr.toLocaleLowerCase())
+    // });
     if(this.sortBy) {
       switch (this.sortBy.field) {
         case 'price':
