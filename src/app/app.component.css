@@ -1,0 +1,17 @@
+.product {
+    margin: 10px;
+}
+
+.product--promoted {
+    border: 3px double deeppink;
+    padding: 10px;
+}
+
+.product__name {
+    font-size: 18px;
+    font-family: "Comic Sans MS";
+}
+
+.product__price {
+
+}
